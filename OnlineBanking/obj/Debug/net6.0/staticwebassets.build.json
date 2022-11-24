@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "DQ30zubwpSDTLsLbFMubOo5QrM9YyKo1UJPZ/xA+hCI=",
+  "Source": "OnlineBanking",
+  "BasePath": "_content/OnlineBanking",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
