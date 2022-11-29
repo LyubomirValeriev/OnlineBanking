@@ -36,16 +36,18 @@ namespace OnlineBanking.Models
 
         public Role role { get; set; }
 
+        public BankAccount bankAccount
+        {
+            get; set;
+        }
 
-        [MaxLength(50), RegularExpression(@"^\b[\dA-Za-z\s\-\\]+\b$", ErrorMessage = "Only letters and numbers")]
-        public string Address { get; set; }
 
-        [MaxLength(40), RegularExpression(@"^\b[A-Za-z\s]+$", ErrorMessage = "Please only use names.")]
-        public string City { get; set; }
+        //[MaxLength(50), RegularExpression(@"^\b[\dA-Za-z\s\-\\]+\b$", ErrorMessage = "Only letters and numbers")]
+        //public string Address { get; set; }
 
-      
+        //[MaxLength(40), RegularExpression(@"^\b[A-Za-z\s]+$", ErrorMessage = "Please only use names.")]
+        //public string City { get; set; }
 
-  
-
+     
     }
 }
