@@ -8,15 +8,33 @@ namespace OnlineBanking.Models
 {
     public class User
     {
-        private const string PHONE_NUMBER_FORMAT = "{0:(61)- ### ### ###}";
+        
 
         //Unique ID Required
         [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserID { get; set; }
 
         [Required, MaxLength(50), RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only letters of the alphabet")]
-        [Display(Name = "Customer Name")]
-        public string UserName { get; set; }
+        [Display(Name = "Customer FirstName")]
+        public string UserFirstName { get; set; }
+
+        [Required, MaxLength(50), RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only letters of the alphabet")]
+        [Display(Name = "Customer LastName")]
+        public string UserLastName { get; set; }
+
+        [RegularExpression(@"^0{1}[\d]{9}$", ErrorMessage = "Only numbers")]
+        public int Age { get; set; }
+
+        public string email { get; set; }
+
+        [Required, MaxLength(50), RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only letters of the alphabet")]
+        [Display(Name = "Username")]
+        public string UserUsername { get; set; }
+
+      
+        public string password { get; set; }
+
+        public Role role { get; set; }
 
 
         [MaxLength(50), RegularExpression(@"^\b[\dA-Za-z\s\-\\]+\b$", ErrorMessage = "Only letters and numbers")]
@@ -25,31 +43,9 @@ namespace OnlineBanking.Models
         [MaxLength(40), RegularExpression(@"^\b[A-Za-z\s]+$", ErrorMessage = "Please only use names.")]
         public string City { get; set; }
 
-        //Must be a 4 digit number
-        [RegularExpression(@"\b\d{4}\b", ErrorMessage = "Four digits only")]
-        public string PostCode { get; set; }
+      
 
-        ////Must be in the format (61)- xxxx xxxx
-        //[Required, StringLength(18, MinimumLength = 10, ErrorMessage = "Phone Number must be inputted with 10 digits")]
-        //public string Phone { get; set; }
-
-        private string _phone;
-
-        [RegularExpression(@"^0{1}[\d]{9}$", ErrorMessage = "Must be an Australian Mobile number")]
-        public string Phone
-        {
-            get
-            {
-                return $"0{_phone = Regex.Replace(_phone, @"(\(61\)|\-|\s)", "")}";
-            }
-            set
-            {
-                _phone = string.Format(PHONE_NUMBER_FORMAT, Convert.ToInt32(value));
-            }
-        }
-
-        [NotMapped]
-        public string DisplayPhoneNumber => _phone;
+  
 
     }
 }
