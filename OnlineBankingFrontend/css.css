@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@500&family=Wallpoet&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color: rgb(133, 121, 129);
+}
+
+.wrapper h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    align-self: center;
+
+}
+
+
+
+.wrapper{
+
+    border-radius: 20px;
+    width: 300px;
+    padding: 30px;
+    /*border: 2px solid orangered; */
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: 1px 1px 2px rgb(249, 207, 20);
+    display: flex;
+    height:50vh;
+    align-items: center;
+    justify-content: center;
+} 
+
+#btn {
+    border: 0;
+    background:none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid  rgb(249, 207, 20);
+    padding: 14px 35px;
+    font-size: 18px;
+    color: rgb(256,256,256);
+    border-radius: 20px; 
+    cursor: pointer;
+}
+
+#btn:hover{
+    background-color: #ffc400ca;
+}
+
+#username {
+    border: 0;
+    background:none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid  rgb(249, 207, 20);
+    padding: 14px 35px;
+    font-size: 18px;
+    color: rgb(256,256,256);
+    border-radius: 20px; 
+    cursor: pointer;
+}
+
+#password{
+    border: 0;
+    background:none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid  rgb(249, 207, 20);
+    padding: 14px 35px;
+    font-size: 18px;
+    color: rgb(256,256,256);
+    border-radius: 20px; 
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+.input[type="username"]
+.input[type="password"] {
+    font-size:20px;
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid blue;
+    padding: 14px 10px;
+    width:220px;
+    outline: none;
+    color:white;
+    border-radius: 24px;
+
+}
+.box{
+    
+
+    border-radius: 20px;
+    width:300px;
+    padding: 30px;
+     border: 2px solid orange; 
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: 1px 1px 2px #ffc400ef;
+    display:flex;
+    flex-direction: column;
+
+    border:2px solid orangered;
+    display: flex;
+    height: 50vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+body{
+
+    font-family: "https://fonts.googleapis.com/css2?family=Radio+Canada:wght@500&family=Wallpoet&display=swap",
+    sans-serif;
+    background: grey;
+    background-size: cover;
+    background-position: center;
+}
+
+.box{
+    border-radius: 20px;
+    width:300px;
+    padding: 30px;
+     border: 2px solid orange; 
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: 1px 1px 2px #ffc400ef;
+    display:flex;
+    flex-direction: column;
+}
+
+.h1{
+    color: #fff;
+    text-transform:uppercase;
+    font-weight: 700;
+    align-self: center ;
+}
+
+.box input[type="text"],
+.box input[type="password"]{
+    font-size: 20px;
+    border: 0;
+    background: none;
+    display: block;
+    margin:20px auto;
+    text-align: center;
+    border:3px solid #0367fd;
+    padding:14px 10px;
+    width: 220px;
+    outline:none;
+    color:#fff;
+    border-radius: 24px;
+    transition: all .2s ease-in;
+
+} 
+
+.wrapper{
+    border:2px solid orangered;
+    display: flex;
+    height: 50vh;
+    align-items: center;
+    justify-content: center;
+} 
