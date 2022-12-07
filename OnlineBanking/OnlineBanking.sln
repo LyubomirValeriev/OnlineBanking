@@ -3,28 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineBanking", "OnlineBanking.csproj", "{FBE6C975-229A-4C6A-ABB6-F448AE0EF0AE}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "OnlineBankingFrontend", "..\OnlineBankingFrontend\", "{A8848C62-8139-4CF2-A779-FA8C9EE232D9}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_59263"
-		Debug.AspNetCompiler.PhysicalPath = "..\OnlineBankingFrontend\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59263\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_59263"
-		Release.AspNetCompiler.PhysicalPath = "..\OnlineBankingFrontend\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59263\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "59263"
-		SlnRelativePath = "..\OnlineBankingFrontend\"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineBanking", "OnlineBanking.csproj", "{2B531F07-C9AD-4551-9CD6-B47DC50A0544}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,19 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FBE6C975-229A-4C6A-ABB6-F448AE0EF0AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBE6C975-229A-4C6A-ABB6-F448AE0EF0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBE6C975-229A-4C6A-ABB6-F448AE0EF0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBE6C975-229A-4C6A-ABB6-F448AE0EF0AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8848C62-8139-4CF2-A779-FA8C9EE232D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8848C62-8139-4CF2-A779-FA8C9EE232D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8848C62-8139-4CF2-A779-FA8C9EE232D9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8848C62-8139-4CF2-A779-FA8C9EE232D9}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2B531F07-C9AD-4551-9CD6-B47DC50A0544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B531F07-C9AD-4551-9CD6-B47DC50A0544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B531F07-C9AD-4551-9CD6-B47DC50A0544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B531F07-C9AD-4551-9CD6-B47DC50A0544}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E53439D9-123A-41A0-AE2C-AC47C1D47165}
+		SolutionGuid = {572DB2F5-EC25-4A35-84FB-FC6AAA45EBF3}
 	EndGlobalSection
 EndGlobal

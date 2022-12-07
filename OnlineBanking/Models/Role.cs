@@ -5,7 +5,7 @@ namespace OnlineBanking.Models
 {
     public class Role
     {
-        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required, MaxLength(50), RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only letters of the alphabet")]

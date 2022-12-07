@@ -46,7 +46,10 @@ namespace OnlineBanking.Migrations
             modelBuilder.Entity("OnlineBanking.Models.Role", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
                     b.Property<string>("role")
                         .IsRequired()
