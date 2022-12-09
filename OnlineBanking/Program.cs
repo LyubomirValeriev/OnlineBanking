@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("DefautConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(connectionString));
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -28,6 +29,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",

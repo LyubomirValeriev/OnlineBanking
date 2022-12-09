@@ -9,7 +9,7 @@ namespace OnlineBanking.Models
 {
     public class BankAccount
     {
-        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string IBAN { get; set; }
         public int Balance{ get; set; }
