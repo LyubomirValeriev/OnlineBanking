@@ -12,6 +12,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefautConnecti
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(connectionString));
 builder.Services.AddRazorPages();
+var startup = new Startup(builder.Configuration);
+startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
@@ -29,6 +31,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapRazorPages();
 

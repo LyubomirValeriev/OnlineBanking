@@ -14,5 +14,7 @@ namespace OnlineBanking
         {
                 // on cascade delete???
         }
+
+        public DbSet<BankAccount> bankAccounts { get; set; }
     }
 }
