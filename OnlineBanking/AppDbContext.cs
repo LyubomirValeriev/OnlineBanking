@@ -12,9 +12,15 @@ namespace OnlineBanking
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-                // on cascade delete???
+            // on cascade delete???
+
+            modelBuilder.Entity<BankAccount>()
+                .HasMany(b => b.transactions)
+                .WithOne(t => t.from);
         }
 
         public DbSet<BankAccount> bankAccounts { get; set; }
+
+        public DbSet<OnlineBanking.Models.Transaction> Transaction { get; set; }
     }
 }

@@ -11,6 +11,9 @@ namespace OnlineBanking.Models
         public DateTime date { get; set; }
 
         public string ToWhom { get; set; }
-        public string Description { get; set; }
+        public string Memo { get; set; }
+        public double amount { get; set; }
+
+        public BankAccount from { get; set; }
     }
 }

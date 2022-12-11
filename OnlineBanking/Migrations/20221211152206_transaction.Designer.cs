@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineBanking;
@@ -11,9 +12,11 @@ using OnlineBanking;
 namespace OnlineBanking.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221211152206_transaction")]
+    partial class transaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,6 +72,9 @@ namespace OnlineBanking.Migrations
                     b.Property<int>("ID")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("BankAccountID")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Memo")
                         .IsRequired()
                         .HasColumnType("text");
@@ -83,12 +89,9 @@ namespace OnlineBanking.Migrations
                     b.Property<DateTime>("date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("fromID")
-                        .HasColumnType("integer");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("fromID");
+                    b.HasIndex("BankAccountID");
 
                     b.ToTable("Transaction");
                 });
@@ -144,13 +147,9 @@ namespace OnlineBanking.Migrations
 
             modelBuilder.Entity("OnlineBanking.Models.Transaction", b =>
                 {
-                    b.HasOne("OnlineBanking.Models.BankAccount", "from")
+                    b.HasOne("OnlineBanking.Models.BankAccount", null)
                         .WithMany("transactions")
-                        .HasForeignKey("fromID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("from");
+                        .HasForeignKey("BankAccountID");
                 });
 
             modelBuilder.Entity("OnlineBanking.Models.User", b =>

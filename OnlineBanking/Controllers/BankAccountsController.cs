@@ -163,6 +163,37 @@ namespace OnlineBanking.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult MakeTransaction()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MakeTransaction(Transaction trans)
+        {
+            var bankAccountClaim = User.Claims.Where(cl => cl.Type.Equals("BankId")).FirstOrDefault();
+            var bankAccountId = int.Parse(bankAccountClaim.Value);
+            var bankAccount = _context.bankAccounts.Find(bankAccountId);
+            var recipientBankAccount = _context.bankAccounts.Where(b => b.IBAN.Equals(trans.ToWhom)).FirstOrDefault();
+
+            if (trans.amount > bankAccount.Balance || recipientBankAccount == null)
+            {
+                return Redirect("Error");
+            }
+
+            trans.date = DateTime.UtcNow;
+            trans.from = bankAccount;
+
+            bankAccount.Balance -= trans.amount;
+            recipientBankAccount.Balance += trans.amount;
+
+            if(bankAccount.transactions == null) { bankAccount.transactions = new List<Transaction>(); }
+            bankAccount.transactions.Add(trans);
+
+            await _context.SaveChangesAsync();
+            return View();
+        }
+
         private bool BankAccountExists(int id)
         {
           return _context.bankAccounts.Any(e => e.ID == id);

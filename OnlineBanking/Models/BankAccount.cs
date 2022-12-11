@@ -12,9 +12,9 @@ namespace OnlineBanking.Models
         [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string IBAN { get; set; }
-        public int Balance{ get; set; }
+        public double Balance{ get; set; }
         public string Holder { get; set; }
 
-        public List<Transaction> transactions { get; set; }
+        public ICollection<Transaction> transactions { get; set; }
     }
 }
