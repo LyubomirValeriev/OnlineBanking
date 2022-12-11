@@ -173,7 +173,11 @@ namespace OnlineBanking.Controllers
         {
             var bankAccountClaim = User.Claims.Where(cl => cl.Type.Equals("BankId")).FirstOrDefault();
             var bankAccountId = int.Parse(bankAccountClaim.Value);
-            var bankAccount = _context.bankAccounts.Find(bankAccountId);
+            var bankAccount = _context.bankAccounts
+                .Where(b => b.ID == bankAccountId)
+                .Include(b => b.transactions)
+                .FirstOrDefault();
+
             var recipientBankAccount = _context.bankAccounts.Where(b => b.IBAN.Equals(trans.ToWhom)).FirstOrDefault();
 
             if (trans.amount > bankAccount.Balance || recipientBankAccount == null)
