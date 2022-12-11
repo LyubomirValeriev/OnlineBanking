@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -14,13 +15,18 @@ namespace OnlineBanking.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext context;
-
-        public HomeController(AppDbContext context)
+        private readonly RoleManager<Role> _roleManager;
+        public HomeController(AppDbContext context )
         {
             this.context = context;
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult AccessDenied()
         {
             return View();
         }
@@ -40,6 +46,7 @@ namespace OnlineBanking.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> LoginPost(User user)
         {
 
@@ -49,9 +56,10 @@ namespace OnlineBanking.Controllers
             User? retrievedUser = context.users
                 .Where(u => u.UserUsername.Equals(user.UserUsername))
                 .Include(u => u.bankAccount)
+                .Include(u => u.role)
                 .FirstOrDefault();
 
-            if (retrievedUser == null && BCrypt.Net.BCrypt.Verify(user.password, retrievedUser.password))
+            if (retrievedUser == null || !BCrypt.Net.BCrypt.Verify(user.password, retrievedUser.password))
             {
                 return RedirectToAction("Login");
             }
@@ -61,12 +69,18 @@ namespace OnlineBanking.Controllers
             {
                 new Claim(ClaimTypes.Name, user.UserUsername),
                 new Claim(ClaimTypes.Email, user.email),
+                new Claim("Role", user.role.role),
+                new Claim("BankId", user.bankAccount.ID.ToString()),
             };
 
-            var identity = new ClaimsIdentity(claims, "AuthCookie");
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+            
+            
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-            await HttpContext.SignInAsync("AuthCookie", principal);
+        
 
 
             return Redirect($"/BankAccounts/Details/{user.bankAccount.ID}"); // redirect to user account
@@ -78,6 +92,7 @@ namespace OnlineBanking.Controllers
 
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             const int ibanLen = 20;
+
             Role? retrivedRole = context.roles
                 .Where(role => role.role.Equals("User"))
                 .FirstOrDefault();
@@ -95,7 +110,7 @@ namespace OnlineBanking.Controllers
 
             user.bankAccount = new BankAccount
             {
-                IBAN = $"BG",
+                IBAN = "BG",
                 Balance = 0,
                 Holder = $"{user.UserFirstName} {user.UserLastName}"
             };

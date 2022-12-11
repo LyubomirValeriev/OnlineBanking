@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Server.IIS;
+using OnlineBanking.Models;
 
 namespace OnlineBanking
 {
@@ -15,13 +17,29 @@ namespace OnlineBanking
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddAuthentication(options =>
+            services.AddAuthentication(option =>
             {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie("AuthCookie", options =>
+                option.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
-                options.Cookie.Name = "AuthCookie";
+                options.Cookie.Name = "AuthToken";
+                options.AccessDeniedPath= "/Home/AccessDenied";
+                options.LoginPath= "/Home/Login";
+
             });
+
+            services.AddAuthorization(option =>
+            {
+
+                option.AddPolicy("UserPolicy", policy => policy.RequireClaim("Role", "User"));
+                option.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Role", "Admin"));
+
+            });
+
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddRoles<Role>();
+
+            
         }
     }
 }

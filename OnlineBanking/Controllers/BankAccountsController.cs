@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using OnlineBanking.Models;
 
 namespace OnlineBanking.Controllers
 {
+    [Authorize(Policy = "UserPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class BankAccountsController : Controller
     {
         private readonly AppDbContext _context;
@@ -21,23 +23,23 @@ namespace OnlineBanking.Controllers
         }
 
         // GET: BankAccounts
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Index()
         {
               return View(await _context.bankAccounts.ToListAsync());
         }
 
         // GET: BankAccounts/Details/5
-        
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.bankAccounts == null)
+            if (_context.bankAccounts == null)
             {
                 return NotFound();
             }
 
             var bankAccount = await _context.bankAccounts
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (bankAccount == null)
+            if (bankAccount == null || (!User.HasClaim("BankId", id.ToString()) && !User.HasClaim("Role", "Admin")) )
             {
                 return NotFound();
             }
@@ -46,6 +48,7 @@ namespace OnlineBanking.Controllers
         }
 
         // GET: BankAccounts/Create
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +59,7 @@ namespace OnlineBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Create([Bind("ID,IBAN,Balance,Holder")] BankAccount bankAccount)
         {
             if (ModelState.IsValid)
@@ -68,6 +72,7 @@ namespace OnlineBanking.Controllers
         }
 
         // GET: BankAccounts/Edit/5
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.bankAccounts == null)
@@ -88,6 +93,7 @@ namespace OnlineBanking.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Edit(int id, [Bind("ID,IBAN,Balance,Holder")] BankAccount bankAccount)
         {
             if (id != bankAccount.ID)
@@ -119,6 +125,7 @@ namespace OnlineBanking.Controllers
         }
 
         // GET: BankAccounts/Delete/5
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.bankAccounts == null)
@@ -139,6 +146,7 @@ namespace OnlineBanking.Controllers
         // POST: BankAccounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "AdminPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.bankAccounts == null)
