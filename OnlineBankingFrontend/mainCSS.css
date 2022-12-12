@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@500&family=Wallpoet&display=swap');
+
+/* Main Page */
+
+*{
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style:none;
+}
+
+body{
+    background-color:rgb(88, 85, 88);
+}
+
+nav{
+    height: 80px;
+    width: 100%;
+    background: rgb(37, 36, 37);
+}
+
+nav ul{
+    float:right;
+    margin-right: 40px;
+}
+
+nav li{
+    display: inline-block;
+    margin: 0 8px;
+    line-height: 80px;
+}
+nav li :hover{
+    color:rgb(0, 0, 0);
+}
+
+nav a{
+   color: white;
+   font-size:18px;
+   text-transform: uppercase; 
+   border: 1px solid white;
+   padding: 7px 10px;
+}
+
+a.active,a:hover{
+    border:1px solid white;
+    transition: .5s;
+}
+
