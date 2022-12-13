@@ -214,7 +214,10 @@ namespace OnlineBanking.Controllers
                 .Include(b => b.transactions)
                 .FirstOrDefault();
 
-            var recipientBankAccount = _context.bankAccounts.Where(b => b.IBAN.Equals(trans.ToWhom)).FirstOrDefault();
+            var recipientBankAccount = _context.bankAccounts
+                .Where(b => b.IBAN.Equals(trans.ToWhom))
+                .Include(b => b.transactions)
+                .FirstOrDefault();
 
             if (trans.amount > bankAccount.Balance || recipientBankAccount == null)
             {
@@ -223,6 +226,8 @@ namespace OnlineBanking.Controllers
 
             trans.date = DateTime.UtcNow;
             trans.from = bankAccount;
+
+            var recipientTrans = new Transaction(trans);
             
 
             bankAccount.Balance -= trans.amount;
@@ -231,6 +236,7 @@ namespace OnlineBanking.Controllers
             trans.amount *= -1;
             if(bankAccount.transactions == null) { bankAccount.transactions = new List<Transaction>(); }
             bankAccount.transactions.Add(trans);
+            recipientBankAccount.transactions.Add(recipientTrans);
 
             await _context.SaveChangesAsync();
             return View();
