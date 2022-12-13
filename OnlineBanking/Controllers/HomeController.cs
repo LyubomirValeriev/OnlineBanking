@@ -87,8 +87,9 @@ namespace OnlineBanking.Controllers
                 new Claim(ClaimTypes.Name, user.UserUsername),
                 new Claim(ClaimTypes.Email, user.email),
                 new Claim("Role", user.role.role),
-                new Claim("BankId", user.bankAccount.ID.ToString()),
             };
+
+            if(user.bankAccount!= null) { claims.Add(new Claim("BankId", user.bankAccount.ID.ToString())); }
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             
@@ -97,11 +98,13 @@ namespace OnlineBanking.Controllers
             
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-        
 
 
-            return Redirect($"/BankAccounts/Details/{user.bankAccount.ID}"); // redirect to user account
-        }
+            if (user.bankAccount != null)
+                return Redirect($"/BankAccounts/Details/{user.bankAccount.ID}"); // redirect to user account
+            else
+                return Redirect($"/BankAccounts");
+        }   
 
         public IActionResult Verify(string code)
         {
@@ -131,7 +134,7 @@ namespace OnlineBanking.Controllers
             user.role = retrivedRole;
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             user.Active = false;
-
+            user.verificationCode = "";
 
            
             

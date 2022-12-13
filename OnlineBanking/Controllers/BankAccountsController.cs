@@ -13,7 +13,7 @@ using OnlineBanking.Models;
 
 namespace OnlineBanking.Controllers
 {
-    [Authorize(Policy = "UserPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(Policy = "LoggedInPolicy", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class BankAccountsController : Controller
     {
         private readonly AppDbContext _context;
@@ -135,27 +135,24 @@ namespace OnlineBanking.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(bankAccount);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BankAccountExists(bankAccount.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(bankAccount);
+                await _context.SaveChangesAsync();
             }
-            return View(bankAccount);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!BankAccountExists(bankAccount.ID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+            
         }
 
         // GET: BankAccounts/Delete/5

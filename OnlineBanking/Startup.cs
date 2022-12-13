@@ -34,6 +34,16 @@ namespace OnlineBanking
 
                 option.AddPolicy("UserPolicy", policy => policy.RequireClaim("Role", "User"));
                 option.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Role", "Admin"));
+                option.AddPolicy("LoggedInPolicy", policy => policy.RequireAssertion(context =>
+                    context.User
+                    .HasClaim(c => 
+                   
+                        c.Type.Equals("Role") && (c.Value.Equals("User") || c.Value.Equals("Admin")
+                    
+                    )
+                 
+                    )
+                ));
 
             });
 

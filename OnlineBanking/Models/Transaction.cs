@@ -33,5 +33,7 @@ namespace OnlineBanking.Models
             this.from = t.from;
             this.date = t.date;
         }
+
+        public Transaction() { }
     }
 }

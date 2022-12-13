@@ -39,7 +39,7 @@ namespace OnlineBanking.Models
 
         public Role role { get; set; }
 
-        public BankAccount bankAccount
+        public BankAccount? bankAccount
         {
             get; set;
         }
