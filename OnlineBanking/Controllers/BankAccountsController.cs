@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -38,13 +39,46 @@ namespace OnlineBanking.Controllers
             }
 
             var bankAccount = await _context.bankAccounts
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .Where(a => a.ID == id)
+                .Include(a => a.transactions.OrderBy(tr => tr.date))
+                .FirstOrDefaultAsync();
+
             if (bankAccount == null || (!User.HasClaim("BankId", id.ToString()) && !User.HasClaim("Role", "Admin")) )
             {
                 return NotFound();
             }
 
             return View(bankAccount);
+        }
+
+        public IActionResult Deposit(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+        public IActionResult Deposit(double deposit, int id)
+        {
+            var bankAccount = _context.bankAccounts
+                .Where(a => a.ID == id)
+                .Include(a => a.transactions)
+                .FirstOrDefault();
+
+            var trans = new Transaction
+            {
+                date= DateTime.Now,
+                amount= deposit,
+                ToWhom = bankAccount.IBAN,
+                from = bankAccount
+
+            };
+
+            bankAccount.transactions.Add(trans);
+
+            bankAccount.Balance += deposit;
+            _context.SaveChanges();
+                
+            return Redirect("BankAccount/Details/" + User.FindFirstValue("BankId"));
         }
 
         // GET: BankAccounts/Create
@@ -134,7 +168,9 @@ namespace OnlineBanking.Controllers
             }
 
             var bankAccount = await _context.bankAccounts
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .Where(m => m.ID == id)
+                .Include(b => b.transactions)
+                .FirstOrDefaultAsync();
             if (bankAccount == null)
             {
                 return NotFound();
@@ -187,10 +223,12 @@ namespace OnlineBanking.Controllers
 
             trans.date = DateTime.UtcNow;
             trans.from = bankAccount;
+            
 
             bankAccount.Balance -= trans.amount;
             recipientBankAccount.Balance += trans.amount;
 
+            trans.amount *= -1;
             if(bankAccount.transactions == null) { bankAccount.transactions = new List<Transaction>(); }
             bankAccount.transactions.Add(trans);
 

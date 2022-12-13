@@ -8,7 +8,10 @@ using NuGet.Common;
 using OnlineBanking.Models;
 using System;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
+using System.Buffers.Text;
 
 namespace OnlineBanking.Controllers
 {
@@ -16,9 +19,11 @@ namespace OnlineBanking.Controllers
     {
         private readonly AppDbContext context;
         private readonly RoleManager<Role> _roleManager;
+        private readonly EmailService _emailService;
         public HomeController(AppDbContext context )
         {
             this.context = context;
+            this._emailService = new EmailService();
         }
 
         public IActionResult Index()
@@ -29,6 +34,12 @@ namespace OnlineBanking.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        public IActionResult SendMessage()
+        {
+            _emailService.SendEmail("stef4oben88@gmail.com", "Test message", "this is a test message");
+            return Content("Mail sent");
         }
 
         public IActionResult Privacy()
@@ -63,6 +74,12 @@ namespace OnlineBanking.Controllers
             {
                 return RedirectToAction("Login");
             }
+
+            if (!retrievedUser.Active)
+            {
+                return Content("Your account is not yet verified!");
+            }
+
             user = retrievedUser;
 
             var claims = new List<Claim>
@@ -86,6 +103,17 @@ namespace OnlineBanking.Controllers
             return Redirect($"/BankAccounts/Details/{user.bankAccount.ID}"); // redirect to user account
         }
 
+        public IActionResult Verify(string code)
+        {
+            var account = context.users.Where(u => u.verificationCode.Equals(code)).FirstOrDefault();
+            if (account == null) return Error();
+
+            account.Active = true;
+
+            context.SaveChanges();
+            return Content("Your account is verified! You may login now.");
+        }
+
         public IActionResult RegisterUser(User user)
         {
             //if (!ModelState.IsValid) return RedirectToAction("Index");
@@ -102,7 +130,7 @@ namespace OnlineBanking.Controllers
             }
             user.role = retrivedRole;
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
-
+            user.Active = false;
 
 
            
@@ -124,8 +152,11 @@ namespace OnlineBanking.Controllers
             .Select(s => s[random.Next(s.Length)]).ToArray());
 
             user.bankAccount.IBAN = $"BG{iban}";
+            user.verificationCode = Base64UrlTextEncoder.Encode(System.Text.Encoding.UTF8.GetBytes(BCrypt.Net.BCrypt.HashPassword(user.UserID.ToString())));
+            _emailService.SendEmail(user.email, "Verification for bank account", $"Click this to verify account: <a href=https://localhost:7094/Home/Verify/{user.verificationCode}>");
 
             context.bankAccounts.Update(user.bankAccount);
+            context.users.Update(user);
             context.SaveChanges();
 
             return RedirectToAction("Index");

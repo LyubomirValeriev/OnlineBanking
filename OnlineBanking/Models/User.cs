@@ -34,6 +34,8 @@ namespace OnlineBanking.Models
 
       
         public string password { get; set; }
+        public string verificationCode { get; set; }
+        public bool Active { get; set; }
 
         public Role role { get; set; }
 
