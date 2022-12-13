@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User PC\\Desktop\\OnlineBanking\\OnlineBanking.csproj": {}
+    "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User PC\\Desktop\\OnlineBanking\\OnlineBanking.csproj": {
+    "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User PC\\Desktop\\OnlineBanking\\OnlineBanking.csproj",
+        "projectUniqueName": "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj",
         "projectName": "OnlineBanking",
-        "projectPath": "C:\\Users\\User PC\\Desktop\\OnlineBanking\\OnlineBanking.csproj",
+        "projectPath": "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj",
         "packagesPath": "C:\\Users\\User PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User PC\\Desktop\\OnlineBanking\\obj\\",
+        "outputPath": "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -50,11 +54,19 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.10, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
