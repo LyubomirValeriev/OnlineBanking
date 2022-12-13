@@ -10261,24 +10261,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bl4ckC4t\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\User PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C# Projects\\OnlineBanking2\\OnlineBanking\\OnlineBanking.csproj",
+      "projectUniqueName": "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj",
       "projectName": "OnlineBanking",
-      "projectPath": "D:\\C# Projects\\OnlineBanking2\\OnlineBanking\\OnlineBanking.csproj",
-      "packagesPath": "C:\\Users\\Bl4ckC4t\\.nuget\\packages\\",
-      "outputPath": "D:\\C# Projects\\OnlineBanking2\\OnlineBanking\\obj\\",
+      "projectPath": "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj",
+      "packagesPath": "C:\\Users\\User PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User PC\\Desktop\\Concert\\OnlineBanking\\OnlineBanking\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Bl4ckC4t\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\User PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10356,7 +10351,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

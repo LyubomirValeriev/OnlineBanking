@@ -145,7 +145,7 @@ namespace OnlineBanking.Controllers
                 Balance = 0,
                 Holder = $"{user.UserFirstName} {user.UserLastName}"
             };
-
+            user.verificationCode = " ";
             context.users.Add(user);
             context.SaveChanges();
 
