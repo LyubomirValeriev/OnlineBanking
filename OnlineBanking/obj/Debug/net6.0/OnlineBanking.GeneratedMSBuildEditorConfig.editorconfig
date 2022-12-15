@@ -9,77 +9,77 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OnlineBanking
 build_property.RootNamespace = OnlineBanking
-build_property.ProjectDir = D:\C# Projects\OnlineBanking2\OnlineBanking\
+build_property.ProjectDir = C:\Users\pavlo\source\repos\OnlineBanking\OnlineBanking\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\C# Projects\OnlineBanking2\OnlineBanking
+build_property.MSBuildProjectDirectory = C:\Users\pavlo\source\repos\OnlineBanking\OnlineBanking
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/Create.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/Delete.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/Deposit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXERlcG9zaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/Details.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/Edit.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/Index.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/BankAccounts/MakeTransaction.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/MakeDeposit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXE1ha2VEZXBvc2l0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/BankAccounts/MakeTransaction.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0FjY291bnRzXE1ha2VUcmFuc2FjdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Home/Index.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Home/Login.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Home/Privacy.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Home/Register.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Home/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Shared/AccessDenied.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Shared/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFjY2Vzc0RlbmllZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Shared/Error.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/_ViewImports.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/_ViewStart.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\# Projects/OnlineBanking2/OnlineBanking/Views/Shared/_Layout.cshtml]
+[C:/Users/pavlo/source/repos/OnlineBanking/OnlineBanking/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-81qnhffjn4
