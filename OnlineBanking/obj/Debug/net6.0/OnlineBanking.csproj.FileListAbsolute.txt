@@ -332,3 +332,4 @@ D:\C# Projects\OnlineBanking2\OnlineBanking\bin\Debug\net6.0\runtimes\win\lib\ne
 D:\C# Projects\OnlineBanking2\OnlineBanking\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\C# Projects\OnlineBanking2\OnlineBanking\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\C# Projects\OnlineBanking2\OnlineBanking\bin\Debug\net6.0\BCrypt.Net-Core.dll
+D:\C# Projects\OnlineBanking2\OnlineBanking\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
