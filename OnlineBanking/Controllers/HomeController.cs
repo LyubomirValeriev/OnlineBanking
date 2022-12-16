@@ -114,6 +114,7 @@ namespace OnlineBanking.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult Verify(string code)
         {
             var account = context.users.Where(u => u.verificationCode.Equals(code)).FirstOrDefault();
@@ -163,7 +164,7 @@ namespace OnlineBanking.Controllers
 
             user.bankAccount.IBAN = $"BG{iban}";
             user.verificationCode = Base64UrlTextEncoder.Encode(System.Text.Encoding.UTF8.GetBytes(BCrypt.Net.BCrypt.HashPassword(user.UserID.ToString())));
-            _emailService.SendEmail(user.email, "Verification for bank account", $"Click this to verify account: <a href=https://localhost:7094/Home/Verify/{user.verificationCode}>");
+            _emailService.SendEmail(user.email, "Verification for bank account", $"Click this to verify account: <a href=https://localhost:7094/Home/Verify?code={user.verificationCode}>");
 
             context.bankAccounts.Update(user.bankAccount);
             context.users.Update(user);

@@ -251,7 +251,7 @@ namespace OnlineBanking.Controllers
             recipientBankAccount.transactions.Add(recipientTrans);
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", new {id = int.Parse(User.FindFirstValue("BankId"))});
+            return RedirectToAction("Details", new { id = int.Parse(User.FindFirstValue("BankId")) });
         }
         public IActionResult MakeDeposit ()
         {
