@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.IBAN)
@@ -42,6 +42,7 @@
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
+    <a asp-action="Index" asp-controller="Users"> Go to Users </a>
 </table>

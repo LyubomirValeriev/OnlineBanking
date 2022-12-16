@@ -64,21 +64,22 @@ namespace OnlineBanking.Controllers
                 .Include(a => a.transactions)
                 .FirstOrDefault();
 
+
             var trans = new Transaction
             {
-                date= DateTime.Now,
-                amount= deposit,
+                date = DateTime.UtcNow,
                 ToWhom = bankAccount.IBAN,
-                from = bankAccount
-
+                from = bankAccount,
+                amount = deposit,
+                Memo = "Deposit"
             };
-
+            
             bankAccount.transactions.Add(trans);
 
             bankAccount.Balance += deposit;
             _context.SaveChanges();
                 
-            return Redirect("BankAccount/Details/" + User.FindFirstValue("BankId"));
+            return RedirectToAction("Details", int.Parse(User.FindFirstValue("BankId")));
         }
 
         // GET: BankAccounts/Create
@@ -216,15 +217,27 @@ namespace OnlineBanking.Controllers
                 .Include(b => b.transactions)
                 .FirstOrDefault();
 
+            trans.amount = Math.Abs(trans.amount);
+
             if (trans.amount > bankAccount.Balance || recipientBankAccount == null)
             {
                 return Redirect("Error");
             }
 
+
             trans.date = DateTime.UtcNow;
             trans.from = bankAccount;
 
-            var recipientTrans = new Transaction(trans);
+            
+
+            var recipientTrans = new Transaction
+            {
+                amount = trans.amount,
+                from = bankAccount,
+                Memo= trans.Memo,
+                date = trans.date,
+                ToWhom = recipientBankAccount.IBAN
+            };
             
 
             bankAccount.Balance -= trans.amount;
@@ -236,7 +249,7 @@ namespace OnlineBanking.Controllers
             recipientBankAccount.transactions.Add(recipientTrans);
 
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction("Details", int.Parse(User.FindFirstValue("BankId")));
         }
 
         private bool BankAccountExists(int id)

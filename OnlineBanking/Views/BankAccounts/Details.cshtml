@@ -31,7 +31,8 @@
 
         <div class ="bg-light">
             @foreach(Transaction trans in Model.transactions){
-                <p> @trans.date - @trans.ToWhom [@trans.amount]: "@trans.Memo" </p>
+                var color = trans.amount > 0 ? "green" : "red";
+                    <p style="color: @color"> @trans.date &lt;@trans.from.IBAN - @trans.ToWhom &gt; [@trans.amount]: "@trans.Memo" </p>
             }
         </div>
     </dl>

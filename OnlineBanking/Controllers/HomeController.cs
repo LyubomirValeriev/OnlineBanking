@@ -12,9 +12,12 @@ using System.Net.Mail;
 using System.Net;
 using System.Security.Claims;
 using System.Buffers.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OnlineBanking.Controllers
 {
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly AppDbContext context;
@@ -25,7 +28,7 @@ namespace OnlineBanking.Controllers
             this.context = context;
             this._emailService = new EmailService();
         }
-
+        
         public IActionResult Index()
         {
             return View();
@@ -95,7 +98,6 @@ namespace OnlineBanking.Controllers
             
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
             
-            
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
 
@@ -105,6 +107,12 @@ namespace OnlineBanking.Controllers
             else
                 return Redirect($"/BankAccounts");
         }   
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Verify(string code)
         {
@@ -136,8 +144,7 @@ namespace OnlineBanking.Controllers
             user.Active = false;
             user.verificationCode = "";
 
-           
-            
+          
 
             user.bankAccount = new BankAccount
             {

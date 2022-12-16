@@ -1,0 +1,7 @@
+﻿@model OnlineBanking.Models.User
+
+<form asp-action="ChangeRole">
+    User @Html.RadioButtonFor(m => m.role, "User");
+    Admin @Html.RadioButtonFor(m => m.role, "Admin");
+    <input type="submit", value="Change" />
+</form>
