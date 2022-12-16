@@ -57,8 +57,10 @@ namespace OnlineBanking.Controllers
         }
 
         [HttpPost]
-        public IActionResult Deposit(double deposit, int id)
+        public IActionResult Deposit(double deposit)
         {
+            var id = int.Parse(User.FindFirstValue("BankId"));
+
             var bankAccount = _context.bankAccounts
                 .Where(a => a.ID == id)
                 .Include(a => a.transactions)
@@ -79,7 +81,7 @@ namespace OnlineBanking.Controllers
             bankAccount.Balance += deposit;
             _context.SaveChanges();
                 
-            return RedirectToAction("Details", int.Parse(User.FindFirstValue("BankId")));
+            return RedirectToAction("Details", new { id = int.Parse(User.FindFirstValue("BankId"))});
         }
 
         // GET: BankAccounts/Create
