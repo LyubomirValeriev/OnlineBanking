@@ -251,7 +251,11 @@ namespace OnlineBanking.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Details", int.Parse(User.FindFirstValue("BankId")));
         }
-
+        public IActionResult MakeDeposit ()
+        {
+            return View();
+        }
+        
         private bool BankAccountExists(int id)
         {
           return _context.bankAccounts.Any(e => e.ID == id);

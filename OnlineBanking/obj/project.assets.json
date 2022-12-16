@@ -10338,23 +10338,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Bl4ckC4t\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\pavlo\\.nuget\\packages\\": {},
+>>>>>>> b6777bdf26c8e36595ebfcc35232dafc5f99223c
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\C# Projects\\OnlineBanking2\\OnlineBanking\\OnlineBanking.csproj",
       "projectName": "OnlineBanking",
       "projectPath": "D:\\C# Projects\\OnlineBanking2\\OnlineBanking\\OnlineBanking.csproj",
       "packagesPath": "C:\\Users\\Bl4ckC4t\\.nuget\\packages\\",
       "outputPath": "D:\\C# Projects\\OnlineBanking2\\OnlineBanking\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\pavlo\\source\\repos\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj",
+      "projectName": "OnlineBanking",
+      "projectPath": "C:\\Users\\pavlo\\source\\repos\\OnlineBanking\\OnlineBanking\\OnlineBanking.csproj",
+      "packagesPath": "C:\\Users\\pavlo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pavlo\\source\\repos\\OnlineBanking\\OnlineBanking\\obj\\",
+>>>>>>> b6777bdf26c8e36595ebfcc35232dafc5f99223c
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Bl4ckC4t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\pavlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> b6777bdf26c8e36595ebfcc35232dafc5f99223c
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -10433,7 +10449,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> b6777bdf26c8e36595ebfcc35232dafc5f99223c
       }
     }
   }
