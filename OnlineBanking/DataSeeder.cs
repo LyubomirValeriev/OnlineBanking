@@ -27,10 +27,6 @@
             
 
 
-           
-
-           
-
             if (context.users.Where(u => u.UserUsername.Equals("admin")).FirstOrDefault() == null)
             {
                 var adminRole = context.roles.Where(r => r.role.Equals("Admin")).FirstOrDefault();
