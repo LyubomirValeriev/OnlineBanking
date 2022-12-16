@@ -8,6 +8,7 @@
             using var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             context.Database.EnsureCreated();
             SetupRoles(context);
+            setupAccounts(context);
         }
 
         private static void SetupRoles(AppDbContext context)
@@ -24,13 +25,13 @@
                     role = "Admin"
                 });
             }
-            
+                
 
+            context.SaveChanges();
+        }
 
-           
-
-           
-
+        private static void setupAccounts(AppDbContext context)
+        {
             if (context.users.Where(u => u.UserUsername.Equals("admin")).FirstOrDefault() == null)
             {
                 var adminRole = context.roles.Where(r => r.role.Equals("Admin")).FirstOrDefault();
@@ -48,9 +49,6 @@
 
                 });
             }
-                
-
-            context.SaveChanges();
         }
     }
 }
