@@ -30,8 +30,10 @@
             context.SaveChanges();
         }
 
-        private static void setupAccounts(AppDbContext context)
-        {
+           
+
+           
+
             if (context.users.Where(u => u.UserUsername.Equals("admin")).FirstOrDefault() == null)
             {
                 var adminRole = context.roles.Where(r => r.role.Equals("Admin")).FirstOrDefault();
