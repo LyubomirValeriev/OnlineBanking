@@ -231,7 +231,6 @@ namespace OnlineBanking.Controllers
             trans.from = bankAccount;
 
             
-
             var recipientTrans = new Transaction
             {
                 amount = trans.amount,
